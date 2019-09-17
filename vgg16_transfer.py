@@ -36,6 +36,8 @@ for layer in model.layers[:15]:
 # opt = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True) # rmsprop, adam
 opt = Adam(lr = 0.0001)
 model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=["accuracy"])
-model.fit(X_train, y_train, batch_size=32, epochs=30)
+model.fit(X_train, y_train, batch_size=32, epochs=16)
 
 score = model.evaluate(X_test, y_test, batch_size=32)
+
+model.save("./vgg16_transfer.h5")
